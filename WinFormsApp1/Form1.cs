@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using System.ComponentModel.Design;
 using System.Net;
 
 namespace WinFormsApp1
@@ -9,7 +10,8 @@ namespace WinFormsApp1
         {
             InitializeComponent();
         }
-
+        private bool darkMode = false;
+        
         private void btnCat_Click(object sender, EventArgs e)
         {
             // Get data from https://meowfacts.herokuapp.com/
@@ -43,25 +45,76 @@ namespace WinFormsApp1
         }
 
         int size = 10;
-
+        Color LIGHT = Color.Wheat;
+        Color DARK = Color.DarkBlue;
+        Color TextDark = Color.Black;
+        Color TexLight = Color.White;
         private void btnBigger_Click(object sender, EventArgs e)
         {
 
             size++;
+            changeFontSize();
+
+
+        }
+        private void changeFontSize()
+        {
             foreach (Control c in Controls)
             {
                 c.Font = new Font(FontFamily.GenericSansSerif, size);
             }
-
-
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
+            changeFontSize();
+            ChangeMode(LIGHT,Controls);
             // Challenges:
             // Add a text smaller button
             // Add a dark mode button
             // Choose a different API from https://github.com/public-apis/public-apis
+        }
+
+        private void lblCatFact_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSmaller_Click(object sender, EventArgs e)
+        {
+            size--;
+            changeFontSize();
+        }
+        private void ChangeMode(Color c,Control.ControlCollection items)
+        {
+            foreach(Control item in items)
+            {
+                item.BackColor = c;
+                ChangeMode(c, item.Controls);
+            }
+        }
+        private void ChangeTextColour(Color c, Control.ControlCollection items)
+        {
+            foreach (Control item in items)
+            {
+                item.ForeColor = c;
+            
+            }
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (darkMode)
+            {
+                DarkModebtn.Text = "powered by darkness";
+                ChangeMode(LIGHT, Controls);
+                ChangeTextColour(TextDark,Controls);
+            }
+            else
+            {
+                DarkModebtn.Text = "Light mode";
+                ChangeMode(DARK, Controls);
+                ChangeTextColour(TexLight, Controls);
+            }
+            darkMode = !darkMode;
         }
     }
 }

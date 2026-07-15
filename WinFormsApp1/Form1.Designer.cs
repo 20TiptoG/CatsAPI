@@ -34,6 +34,8 @@
             splitContainer1 = new SplitContainer();
             splitContainer2 = new SplitContainer();
             flowLayoutPanel1 = new FlowLayoutPanel();
+            btnSmaller = new Button();
+            DarkModebtn = new Button();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -64,6 +66,7 @@
             lblCatFact.Size = new Size(948, 309);
             lblCatFact.TabIndex = 1;
             lblCatFact.Text = "Get ready to find out some fascinating feline facts";
+            lblCatFact.Click += lblCatFact_Click;
             // 
             // btnBigger
             // 
@@ -113,11 +116,33 @@
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.Controls.Add(btnBigger);
+            flowLayoutPanel1.Controls.Add(btnSmaller);
+            flowLayoutPanel1.Controls.Add(DarkModebtn);
             flowLayoutPanel1.Dock = DockStyle.Fill;
             flowLayoutPanel1.Location = new Point(0, 0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(1048, 27);
             flowLayoutPanel1.TabIndex = 3;
+            // 
+            // btnSmaller
+            // 
+            btnSmaller.Location = new Point(84, 3);
+            btnSmaller.Name = "btnSmaller";
+            btnSmaller.Size = new Size(75, 23);
+            btnSmaller.TabIndex = 3;
+            btnSmaller.Text = "-";
+            btnSmaller.UseVisualStyleBackColor = true;
+            btnSmaller.Click += btnSmaller_Click;
+            // 
+            // DarkModebtn
+            // 
+            DarkModebtn.Location = new Point(165, 3);
+            DarkModebtn.Name = "DarkModebtn";
+            DarkModebtn.Size = new Size(237, 23);
+            DarkModebtn.TabIndex = 4;
+            DarkModebtn.Text = "powered by darkness";
+            DarkModebtn.UseVisualStyleBackColor = true;
+            DarkModebtn.Click += button1_Click;
             // 
             // Form1
             // 
@@ -148,5 +173,7 @@
         private SplitContainer splitContainer1;
         private SplitContainer splitContainer2;
         private FlowLayoutPanel flowLayoutPanel1;
+        private Button btnSmaller;
+        private Button DarkModebtn;
     }
 }
